@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import type { Difficulty, QuestionType } from '@/types/trivia'
-import { categories } from '@/utils/categories';
+import { categories } from '@/utils/constants';
 
 const quizSearch = reactive({
   type: '' as QuestionType | '',
@@ -18,7 +18,7 @@ const handleSubmit = () => {
 <template>
   <main>
     <form @submit.prevent="handleSubmit">
-      <div>
+      <div class="form-group">
         <label for="type">Type</label>
         <select id="type" v-model="quizSearch.type" name="type">
           <option value="">Any Type</option>
@@ -27,7 +27,7 @@ const handleSubmit = () => {
         </select>
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="difficulty">Difficulty</label>
         <select id="difficulty" v-model="quizSearch.difficulty" name="difficulty">
           <option value="">Any Difficulty</option>
@@ -37,7 +37,7 @@ const handleSubmit = () => {
         </select>
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="category">Category</label>
         <select id="category" v-model="quizSearch.category" name="category">
           <option value="">Any Category</option>
@@ -47,7 +47,7 @@ const handleSubmit = () => {
         </select>
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="amount">Number of questions</label>
         <input
           id="amount"
@@ -63,3 +63,36 @@ const handleSubmit = () => {
     </form>
   </main>
 </template>
+
+<style scoped>
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input,
+button,
+textarea,
+select {
+ font: inherit;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+
+  @media (width > 720px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  display: grid;
+}
+
+input, select {
+  background: limegreen;
+}
+</style>

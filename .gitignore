@@ -37,3 +37,10 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
+
+# Local environment and generated Blueprint state
+.env
+.env.*
+!.env.example
+blueprint/.state/
+Thumbs.db
